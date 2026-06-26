@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "entry_decisions": ["keep", "discard", "retry", "investigate"],
+  "required_top_level_keys": [
+    "schema_version",
+    "updated_at",
+    "rollup",
+    "entries"
+  ],
+  "required_rollup_keys": [
+    "retained_patterns",
+    "discarded_patterns",
+    "next_experiments"
+  ],
+  "required_entry_keys": [
+    "id",
+    "date",
+    "context",
+    "change",
+    "hypothesis",
+    "result",
+    "decision",
+    "evidence_refs",
+    "next_action"
+  ]
+}

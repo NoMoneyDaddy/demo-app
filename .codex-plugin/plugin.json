@@ -1,0 +1,43 @@
+{
+  "name": "one-button-done-project",
+  "version": "0.1.0",
+  "description": "Repo-first loop engineering framework for AI agents, with skills, governance docs, capability inspection, tool setup guidance, and marketplace readiness workflow.",
+  "author": {
+    "name": "NoMoneyDaddy",
+    "url": "https://github.com/NoMoneyDaddy"
+  },
+  "homepage": "https://github.com/NoMoneyDaddy/One_Botton_Done_Project",
+  "repository": "https://github.com/NoMoneyDaddy/One_Botton_Done_Project",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "codex",
+    "loop-engineering",
+    "ai-agents",
+    "project-governance",
+    "skill-runtime",
+    "tool-discovery"
+  ],
+  "skills": "./.agents/skills/",
+  "interface": {
+    "displayName": "One Button Done Project",
+    "shortDescription": "Repo-first AI agent workflow, skills, and tool-readiness framework",
+    "longDescription": "Use One Button Done Project to guide AI agents through intake, capability checks, planning, implementation, verification, documentation, tool setup, and marketplace readiness workflows.",
+    "developerName": "NoMoneyDaddy",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use this repo to bootstrap an AI-ready project workflow.",
+      "Inspect this project and recommend the next smallest verified improvement."
+    ],
+    "websiteURL": "https://github.com/NoMoneyDaddy/One_Botton_Done_Project",
+    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "brandColor": "#111827",
+    "screenshots": []
+  }
+}

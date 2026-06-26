@@ -1,0 +1,124 @@
+{
+  "profiles": {
+    "nextjs-app-router": {
+      "displayName": "Next.js App Router",
+      "supportLevel": "full",
+      "projectTypes": ["web-app", "landing-page", "ecommerce"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["tailwind", "none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "npx create-next-app@latest",
+      "recommendedNode": "20.9+"
+    },
+    "vite-react": {
+      "displayName": "Vite React",
+      "supportLevel": "full",
+      "projectTypes": ["web-app", "landing-page", "data-dashboard"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["tailwind", "none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "npm create vite@latest",
+      "recommendedNode": "20.19+"
+    },
+    "node-express-api": {
+      "displayName": "Node + Express API",
+      "supportLevel": "full",
+      "projectTypes": ["api-service"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "npm init -y",
+      "recommendedNode": "20+"
+    },
+    "react-native-expo": {
+      "displayName": "React Native + Expo",
+      "supportLevel": "full",
+      "projectTypes": ["mobile-app"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "npx create-expo-app@latest",
+      "recommendedNode": "20+"
+    },
+    "capacitor-mobile-app": {
+      "displayName": "Capacitor Mobile App",
+      "supportLevel": "full",
+      "projectTypes": ["mobile-app"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["tailwind", "none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "npm init @capacitor/app@latest",
+      "recommendedNode": "22+"
+    },
+    "flutter-app": {
+      "displayName": "Flutter App",
+      "supportLevel": "full",
+      "projectTypes": ["mobile-app"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "flutter create",
+      "recommendedNode": "n/a"
+    },
+    "tauri-desktop": {
+      "displayName": "Tauri Desktop",
+      "supportLevel": "full",
+      "projectTypes": ["desktop-app"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "npm create tauri-app@latest",
+      "recommendedNode": "20+"
+    },
+    "electron-desktop": {
+      "displayName": "Electron Desktop",
+      "supportLevel": "full",
+      "projectTypes": ["desktop-app"],
+      "languages": ["typescript", "javascript"],
+      "styling": ["none"],
+      "databases": ["none", "supabase"],
+      "qualityTools": ["biome", "none"],
+      "officialScaffold": "electron quick start tutorial",
+      "recommendedNode": "20+"
+    },
+    "ios-swiftui": {
+      "displayName": "iOS SwiftUI",
+      "supportLevel": "plan-only",
+      "projectTypes": ["mobile-app"],
+      "languages": ["javascript"],
+      "styling": ["none"],
+      "databases": ["none"],
+      "qualityTools": ["none"],
+      "officialScaffold": "Xcode new project",
+      "recommendedNode": "n/a",
+      "manualRunbook": "docs/native_app_bootstrap_runbook.md#ios-swiftui",
+      "officialDocs": [
+        "https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app",
+        "https://developer.apple.com/documentation/xcode/building-and-running-an-app"
+      ]
+    },
+    "android-kotlin": {
+      "displayName": "Android Kotlin",
+      "supportLevel": "plan-only",
+      "projectTypes": ["mobile-app"],
+      "languages": ["javascript"],
+      "styling": ["none"],
+      "databases": ["none"],
+      "qualityTools": ["none"],
+      "officialScaffold": "Android Studio new project",
+      "recommendedNode": "n/a",
+      "manualRunbook": "docs/native_app_bootstrap_runbook.md#android-kotlin",
+      "officialDocs": [
+        "https://developer.android.com/studio/projects/create-project",
+        "https://developer.android.com/studio/run"
+      ]
+    }
+  }
+}

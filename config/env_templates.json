@@ -1,0 +1,177 @@
+{
+  "env_templates": {
+    "next_js_supabase": {
+      "description": "Next.js + Supabase 環境變數配置",
+      "variables": {
+        "NEXT_PUBLIC_SUPABASE_URL": {
+          "description": "Supabase 項目 URL",
+          "example": "https://your-project.supabase.co",
+          "required": true,
+          "public": true
+        },
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": {
+          "description": "Supabase 匿名金鑰",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "required": true,
+          "public": true
+        },
+        "SUPABASE_SERVICE_ROLE_KEY": {
+          "description": "Supabase 服務角色金鑰（後端使用）",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "required": false,
+          "public": false
+        },
+        "NEXT_PUBLIC_API_URL": {
+          "description": "API 基礎 URL",
+          "example": "https://your-app.zeabur.app/api",
+          "required": false,
+          "public": true
+        }
+      }
+    },
+    "next_js_postgresql": {
+      "description": "Next.js + PostgreSQL + Prisma 環境變數配置",
+      "variables": {
+        "DATABASE_URL": {
+          "description": "PostgreSQL 連接字符串",
+          "example": "postgresql://user:password@localhost:5432/dbname",
+          "required": true,
+          "public": false
+        },
+        "NEXT_PUBLIC_API_URL": {
+          "description": "API 基礎 URL",
+          "example": "https://your-app.zeabur.app/api",
+          "required": false,
+          "public": true
+        },
+        "NODE_ENV": {
+          "description": "環境標識",
+          "example": "production",
+          "required": true,
+          "public": true
+        }
+      }
+    },
+    "next_js_mongodb": {
+      "description": "Next.js + MongoDB 環境變數配置",
+      "variables": {
+        "MONGODB_URI": {
+          "description": "MongoDB 連接字符串",
+          "example": "mongodb+srv://user:password@cluster.mongodb.net/dbname",
+          "required": true,
+          "public": false
+        },
+        "NEXT_PUBLIC_API_URL": {
+          "description": "API 基礎 URL",
+          "example": "https://your-app.zeabur.app/api",
+          "required": false,
+          "public": true
+        },
+        "NODE_ENV": {
+          "description": "環境標識",
+          "example": "production",
+          "required": true,
+          "public": true
+        }
+      }
+    },
+    "next_js_firebase": {
+      "description": "Next.js + Firebase 環境變數配置",
+      "variables": {
+        "NEXT_PUBLIC_FIREBASE_API_KEY": {
+          "description": "Firebase API 金鑰",
+          "example": "AIzaSyDxxx...",
+          "required": true,
+          "public": true
+        },
+        "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN": {
+          "description": "Firebase 認證域名",
+          "example": "your-project.firebaseapp.com",
+          "required": true,
+          "public": true
+        },
+        "NEXT_PUBLIC_FIREBASE_PROJECT_ID": {
+          "description": "Firebase 項目 ID",
+          "example": "your-project-id",
+          "required": true,
+          "public": true
+        },
+        "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET": {
+          "description": "Firebase 儲存桶",
+          "example": "your-project.appspot.com",
+          "required": true,
+          "public": true
+        },
+        "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": {
+          "description": "Firebase 消息發送者 ID",
+          "example": "123456789",
+          "required": true,
+          "public": true
+        },
+        "NEXT_PUBLIC_FIREBASE_APP_ID": {
+          "description": "Firebase 應用 ID",
+          "example": "1:123456789:web:abcdef123456",
+          "required": true,
+          "public": true
+        }
+      }
+    },
+    "react_vite_supabase": {
+      "description": "React (Vite) + Supabase 環境變數配置",
+      "variables": {
+        "VITE_SUPABASE_URL": {
+          "description": "Supabase 項目 URL",
+          "example": "https://your-project.supabase.co",
+          "required": true,
+          "public": true
+        },
+        "VITE_SUPABASE_ANON_KEY": {
+          "description": "Supabase 匿名金鑰",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "required": true,
+          "public": true
+        },
+        "VITE_API_URL": {
+          "description": "API 基礎 URL",
+          "example": "https://your-api.zeabur.app/api",
+          "required": false,
+          "public": true
+        }
+      }
+    },
+    "vue_supabase": {
+      "description": "Vue + Supabase 環境變數配置",
+      "variables": {
+        "VITE_SUPABASE_URL": {
+          "description": "Supabase 項目 URL",
+          "example": "https://your-project.supabase.co",
+          "required": true,
+          "public": true
+        },
+        "VITE_SUPABASE_ANON_KEY": {
+          "description": "Supabase 匿名金鑰",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "required": true,
+          "public": true
+        }
+      }
+    },
+    "common": {
+      "description": "所有應用通用的環境變數",
+      "variables": {
+        "NODE_ENV": {
+          "description": "環境標識 (development/production)",
+          "example": "production",
+          "required": true,
+          "public": true
+        },
+        "PORT": {
+          "description": "應用監聽端口",
+          "example": "3000",
+          "required": false,
+          "public": true
+        }
+      }
+    }
+  }
+}

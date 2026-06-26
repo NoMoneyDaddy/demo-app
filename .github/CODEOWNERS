@@ -1,0 +1,11 @@
+# Default owners
+* @NoMoneyDaddy
+
+# Governance and agent runtime
+AGENTS.md @NoMoneyDaddy
+.agents/skills/ @NoMoneyDaddy
+skills/ @NoMoneyDaddy
+.loop/ @NoMoneyDaddy
+config/ @NoMoneyDaddy
+scripts/ @NoMoneyDaddy
+docs/ @NoMoneyDaddy

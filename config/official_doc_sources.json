@@ -1,0 +1,29 @@
+{
+  "web": {
+    "nextjs": "https://nextjs.org/docs",
+    "vite": "https://vite.dev/guide/",
+    "react": "https://react.dev/",
+    "tailwind": "https://tailwindcss.com/docs",
+    "supabase": "https://supabase.com/docs"
+  },
+  "mobile": {
+    "expo": "https://docs.expo.dev/",
+    "react_native": "https://reactnative.dev/docs/getting-started",
+    "capacitor": "https://capacitorjs.com/docs/getting-started",
+    "flutter": "https://docs.flutter.dev/",
+    "android": "https://developer.android.com/get-started/overview",
+    "swiftui": "https://developer.apple.com/tutorials/swiftui"
+  },
+  "desktop": {
+    "tauri": "https://v2.tauri.app/start/create-project/",
+    "electron": "https://electronjs.org/docs/latest/tutorial/tutorial-first-app",
+    "xcode": "https://developer.apple.com/xcode/"
+  },
+  "rules": {
+    "priority": [
+      "official docs first",
+      "official tutorials and architecture guides second",
+      "high-quality GitHub repos third"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "surfaces": [
+    {
+      "name": "Codex",
+      "entry": "AGENTS.md",
+      "skill_runtime": ".agents/skills",
+      "capabilities": {
+        "goal_loop": "native",
+        "skills": "native",
+        "browser": "host-dependent",
+        "shell": "native",
+        "mcp": "native",
+        "subagents": "native"
+      }
+    },
+    {
+      "name": "Claude Code",
+      "entry": "CLAUDE.md",
+      "skill_runtime": ".claude/skills",
+      "capabilities": {
+        "goal_loop": "native",
+        "skills": "native",
+        "browser": "host-dependent",
+        "shell": "native",
+        "mcp": "native",
+        "subagents": "native"
+      }
+    },
+    {
+      "name": "Cursor",
+      "entry": ".cursor/rules/00-project.mdc",
+      "skill_runtime": "AGENTS.md-bridged",
+      "capabilities": {
+        "goal_loop": "native",
+        "skills": "bridged",
+        "browser": "host-dependent",
+        "shell": "host-dependent",
+        "mcp": "native",
+        "subagents": "native"
+      }
+    },
+    {
+      "name": "Gemini CLI",
+      "entry": "GEMINI.md",
+      "skill_runtime": ".gemini/commands + AGENTS.md",
+      "capabilities": {
+        "goal_loop": "adapted",
+        "skills": "bridged",
+        "browser": "host-dependent",
+        "shell": "host-dependent",
+        "mcp": "native",
+        "subagents": "limited"
+      }
+    },
+    {
+      "name": "Hermes",
+      "entry": "AGENTS.md",
+      "skill_runtime": "~/.hermes/skills or exported mirror",
+      "capabilities": {
+        "goal_loop": "bridged",
+        "skills": "exported",
+        "browser": "host-dependent",
+        "shell": "host-dependent",
+        "mcp": "host-dependent",
+        "subagents": "platform-dependent"
+      }
+    },
+    {
+      "name": "OpenClaw",
+      "entry": "AGENTS.md",
+      "skill_runtime": "skills + .agents/skills",
+      "capabilities": {
+        "goal_loop": "bridged",
+        "skills": "native",
+        "browser": "host-dependent",
+        "shell": "host-dependent",
+        "mcp": "host-dependent",
+        "subagents": "platform-dependent"
+      }
+    }
+  ]
+}

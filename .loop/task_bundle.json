@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "goal": "Replicate Loop Engineering Framework to demo-app",
+  "constraints": ["Must maintain cross-platform compatibility", "No platform-specific dependencies"],
+  "interfaces": [],
+  "invariants": ["All entry files must exist", "Skills must be mirrored across paths"],
+  "tasks": [
+    {"id": "T1", "status": "complete", "task": "Create directory structure"},
+    {"id": "T2", "status": "complete", "task": "Create core entry files"},
+    {"id": "T3", "status": "complete", "task": "Create skill files"},
+    {"id": "T4", "status": "complete", "task": "Create documentation"},
+    {"id": "T5", "status": "in_progress", "task": "Create scripts and validate"}
+  ]
+}

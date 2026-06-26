@@ -1,0 +1,14 @@
+description = "Set or refine the current session goal and sync .loop state"
+prompt = """
+Read `AGENTS.md`, `docs/session_loop_contract.md`, `.loop/GOAL.md`, `.loop/PLAN.md`, and `.loop/STATE.json`.
+
+Your job:
+1. Refine the session objective using the user input below.
+2. Update `.loop/GOAL.md` with a clearer objective, done definition, and constraints.
+3. Update `.loop/PLAN.md` with the current phase and next slice.
+4. Update `.loop/STATE.json` so `phase`, `current_state`, and `updated_at` match reality.
+5. If the task is still fuzzy, use the repo's `interview-me` / `idea-refine` workflow instead of guessing.
+
+User input:
+{{args}}
+"""

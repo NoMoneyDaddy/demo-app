@@ -1,0 +1,19 @@
+---
+description: Session loop defaults
+alwaysApply: true
+---
+
+若 repo 內有 `.loop/*`：
+
+- 先讀 `.loop/GOAL.md`
+- 再讀 `.loop/STATE.json`
+- 實作或驗證後，主動更新：
+  - `.loop/PLAN.md`
+  - `.loop/CHECKPOINTS.md`
+  - `.loop/EVIDENCE.md`
+
+若 `.loop/*` 不存在：
+
+- 先建議執行 `node scripts/init_session_loop.js . --goal "<objective>"`
+
+不要把 loop 狀態只留在對話記憶。

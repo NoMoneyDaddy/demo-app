@@ -1,0 +1,14 @@
+description = "Summarize the current session loop status from .loop files"
+prompt = """
+Read `.loop/GOAL.md`, `.loop/PLAN.md`, `.loop/STATE.json`, `.loop/CHECKPOINTS.md`, and `.loop/EVIDENCE.md`.
+
+Return a concise status report:
+- objective
+- current phase / state
+- latest completed checkpoint
+- latest validation evidence
+- next smallest slice
+- blockers, if any
+
+Do not rewrite files unless the user explicitly asks.
+"""
