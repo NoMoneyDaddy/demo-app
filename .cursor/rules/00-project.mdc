@@ -1,0 +1,16 @@
+---
+description: Loop engineering project defaults
+alwaysApply: true
+---
+
+先讀 `AGENTS.md`。
+
+再依需求讀：
+
+- `.agents/skills/using-agent-skills/SKILL.md`
+- `.agents/skills/loop-engineering/SKILL.md`
+- 對應技術棧的 `.agents/skills/*-best-practices/SKILL.md`
+
+只做最小必要修改。
+涉及框架、部署、第三方整合時先查官方文檔。
+修改後主動執行可用驗證。

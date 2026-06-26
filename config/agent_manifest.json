@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "agent_name": "one-button-done-project",
+  "version": "0.1.0",
+  "primary_entry": "AGENTS.md",
+  "supported_surfaces": [
+    "Codex",
+    "Claude Code",
+    "Cursor",
+    "Gemini CLI",
+    "GitHub Copilot"
+  ],
+  "skills_runtime_paths": [
+    ".agents/skills",
+    ".claude/skills",
+    "skills"
+  ],
+  "autonomy_default_level": "L1",
+  "allowed_actions": [
+    "repo_read",
+    "repo_write",
+    "doc_update",
+    "verified_tool_setup"
+  ],
+  "restricted_actions": [
+    "secret_persistence",
+    "unverified_remote_install",
+    "implicit_system_permission_changes",
+    "unguarded_external_write"
+  ],
+  "requires_human_gate": [
+    "login_or_secret_entry",
+    "irreversible_choice",
+    "system_level_install",
+    "auto_merge",
+    "billing_or_deployment_risk"
+  ],
+  "verification_gates": [
+    "tests",
+    "lint",
+    "build",
+    "smoke",
+    "evidence_log"
+  ],
+  "audit_surfaces": [
+    ".loop/STATE.json",
+    ".loop/CHECKPOINTS.md",
+    ".loop/EVIDENCE.md",
+    ".loop/LEARNINGS.json",
+    "docs/STATE.md",
+    "docs/ADRS.md"
+  ],
+  "secret_handling": "environment-variables-only",
+  "kill_switch_conditions": [
+    "same_error_3x",
+    "circuit_breaker_open",
+    "missing_required_auth",
+    "external_service_without_fallback"
+  ]
+}

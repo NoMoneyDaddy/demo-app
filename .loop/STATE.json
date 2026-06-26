@@ -1,0 +1,16 @@
+{
+  "mode": "session-loop",
+  "maturity_level": "L2",
+  "tier": "standard",
+  "orientation": "engineer",
+  "time_budget": null,
+  "convergence_state": "closed",
+  "status": "active",
+  "phase": "Ship",
+  "current_state": "ship-prep",
+  "current_task": "Framework replicated to demo-app repository",
+  "retry_count": 0,
+  "blocked_reason": null,
+  "last_verified_at": "2026-06-26T00:00:00Z",
+  "updated_at": "2026-06-26T00:00:00Z"
+}

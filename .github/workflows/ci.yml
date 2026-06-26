@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          - "20"
+          - "22"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Check script syntax
+        run: |
+          for f in scripts/*.js; do node --check "$f"; done
+
+      - name: Check shell syntax
+        run: |
+          for f in scripts/*.sh; do bash -n "$f"; done
+
+      - name: Validate JSON config
+        run: |
+          node -e "const fs=require('fs'); for (const f of fs.readdirSync('config').filter(n=>n.endsWith('.json')).sort()) JSON.parse(fs.readFileSync('config/'+f,'utf8')); console.log('json ok')"
+
+      - name: Validate repository integrity
+        run: node scripts/validate_repo_integrity.js
+
+      - name: Run repo tests
+        run: node scripts/run_repo_tests.js

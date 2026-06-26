@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "scripts": [
+    {
+      "path": "scripts/inspect_agent_capabilities.js",
+      "category": "accelerator",
+      "requires": ["node", "filesystem:read"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-capability-audit"
+    },
+    {
+      "path": "scripts/evaluate_session_loop.js",
+      "category": "quality-gate",
+      "requires": ["node", "filesystem:read"],
+      "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
+      "fallback_mode": "manual-loop-evaluation"
+    },
+    {
+      "path": "scripts/validate_repo_integrity.js",
+      "category": "quality-gate",
+      "requires": ["node", "filesystem:read"],
+      "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
+      "fallback_mode": "manual-integrity-review"
+    },
+    {
+      "path": "scripts/init_session_loop.js",
+      "category": "strong-accelerator",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-loop-file-creation"
+    },
+    {
+      "path": "scripts/init_project_workspace.js",
+      "category": "strong-accelerator",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-project-bootstrap"
+    },
+    {
+      "path": "scripts/scaffold_project.js",
+      "category": "environment-bound",
+      "requires": ["node", "shell", "network"],
+      "scope": ["local-dev", "sandbox-with-network", "remote-runner"],
+      "fallback_mode": "official-scaffold-plan-only"
+    },
+    {
+      "path": "scripts/bootstrap_agent_files.js",
+      "category": "strong-accelerator",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-file-copy"
+    },
+    {
+      "path": "scripts/setup_sandbox_tools.sh",
+      "category": "environment-bound",
+      "requires": ["shell", "network", "package-manager"],
+      "scope": ["local-dev", "sandbox-with-network", "remote-runner"],
+      "fallback_mode": "manual-tool-install-guide"
+    },
+    {
+      "path": "scripts/auto_skill_setup.js",
+      "category": "accelerator",
+      "requires": ["node", "filesystem:read"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-skill-selection"
+    },
+    {
+      "path": "scripts/run_repo_tests.js",
+      "category": "quality-gate",
+      "requires": ["node", "filesystem:read"],
+      "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
+      "fallback_mode": "manual-test-execution"
+    },
+    {
+      "path": "scripts/generate_project_configs.js",
+      "category": "strong-accelerator",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-config-generation"
+    }
+  ]
+}
