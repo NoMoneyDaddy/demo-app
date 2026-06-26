@@ -6,77 +6,212 @@
       "category": "accelerator",
       "requires": ["node", "filesystem:read"],
       "scope": ["local-dev", "sandbox", "remote-runner"],
-      "fallback_mode": "manual-capability-audit"
+      "fallback_mode": "manual-capability-audit",
+      "fallback_steps": [
+        "讀 AGENTS.md、docs/platform_support_matrix.md、docs/agent_skill_catalog.md",
+        "人工盤點目前 AI 平台可讀入口、skills mirror、MCP 設定與可用 CLI",
+        "把結果寫入 docs/STATE.md 或 .loop/CHECKPOINTS.md"
+      ]
     },
     {
       "path": "scripts/evaluate_session_loop.js",
       "category": "quality-gate",
       "requires": ["node", "filesystem:read"],
       "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
-      "fallback_mode": "manual-loop-evaluation"
+      "fallback_mode": "manual-loop-evaluation",
+      "fallback_steps": [
+        "讀 docs/session_loop_contract.md 與 docs/loop_evaluation_gate.md",
+        "人工檢查 .loop/* 七個核心檔案是否存在且不是 placeholder",
+        "人工檢查 STATE.json、LEARNINGS.json、evidence、checkpoint、policy 是否齊全",
+        "把判斷結果寫入 .loop/CHECKPOINTS.md 或 docs/STATE.md"
+      ]
     },
     {
       "path": "scripts/validate_repo_integrity.js",
       "category": "quality-gate",
       "requires": ["node", "filesystem:read"],
       "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
-      "fallback_mode": "manual-integrity-review"
-    },
-    {
-      "path": "scripts/init_session_loop.js",
-      "category": "strong-accelerator",
-      "requires": ["node", "filesystem:write"],
-      "scope": ["local-dev", "sandbox", "remote-runner"],
-      "fallback_mode": "manual-loop-file-creation"
-    },
-    {
-      "path": "scripts/init_project_workspace.js",
-      "category": "strong-accelerator",
-      "requires": ["node", "filesystem:write"],
-      "scope": ["local-dev", "sandbox", "remote-runner"],
-      "fallback_mode": "manual-project-bootstrap"
-    },
-    {
-      "path": "scripts/scaffold_project.js",
-      "category": "environment-bound",
-      "requires": ["node", "shell", "network"],
-      "scope": ["local-dev", "sandbox-with-network", "remote-runner"],
-      "fallback_mode": "official-scaffold-plan-only"
-    },
-    {
-      "path": "scripts/bootstrap_agent_files.js",
-      "category": "strong-accelerator",
-      "requires": ["node", "filesystem:write"],
-      "scope": ["local-dev", "sandbox", "remote-runner"],
-      "fallback_mode": "manual-file-copy"
-    },
-    {
-      "path": "scripts/setup_sandbox_tools.sh",
-      "category": "environment-bound",
-      "requires": ["shell", "network", "package-manager"],
-      "scope": ["local-dev", "sandbox-with-network", "remote-runner"],
-      "fallback_mode": "manual-tool-install-guide"
-    },
-    {
-      "path": "scripts/auto_skill_setup.js",
-      "category": "accelerator",
-      "requires": ["node", "filesystem:read"],
-      "scope": ["local-dev", "sandbox", "remote-runner"],
-      "fallback_mode": "manual-skill-selection"
+      "fallback_mode": "manual-integrity-review",
+      "fallback_steps": [
+        "確認 AGENTS.md、CLAUDE.md、GEMINI.md、README.md、README.en.md 存在",
+        "確認 .agents/skills、.claude/skills、skills 的 skill 名稱一致",
+        "確認 config/*.json 可解析，且 scripts/* 都登記在 config/script_capabilities.json",
+        "抽查 README 與 docs/*.md 的本地連結沒有指向已刪檔案"
+      ]
     },
     {
       "path": "scripts/run_repo_tests.js",
       "category": "quality-gate",
       "requires": ["node", "filesystem:read"],
       "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
-      "fallback_mode": "manual-test-execution"
+      "fallback_mode": "manual-test-execution",
+      "fallback_steps": [
+        "逐一執行 tests/*.test.js 的關鍵檢查邏輯",
+        "至少確認 repo_surface_manifest 與 learning ledger summary 的核心不變量",
+        "把結果寫入 .loop/EVIDENCE.md 或 docs/STATE.md"
+      ]
+    },
+    {
+      "path": "scripts/summarize_learning_ledger.js",
+      "category": "accelerator",
+      "requires": ["node", "filesystem:read"],
+      "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
+      "fallback_mode": "manual-learning-summary",
+      "fallback_steps": [
+        "讀 .loop/LEARNINGS.json",
+        "人工統計 keep / discard / retry / investigate 數量",
+        "把摘要寫入 .loop/CHECKPOINTS.md 或 docs/STATE.md"
+      ]
+    },
+    {
+      "path": "scripts/export_task_bundle.js",
+      "category": "accelerator",
+      "requires": ["node", "filesystem:read", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
+      "fallback_mode": "manual-task-bundle-export",
+      "fallback_steps": [
+        "讀 docs/SPEC.md 的 Goal / Constraints / Interfaces / Invariants / Tasks",
+        "人工整理成 machine-readable JSON",
+        "寫到 .loop/task_bundle.json 或目標輸出路徑"
+      ]
+    },
+    {
+      "path": "scripts/init_session_loop.js",
+      "category": "strong-accelerator",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-loop-file-creation",
+      "fallback_steps": [
+        "手動建立 .loop/GOAL.md",
+        "手動建立 .loop/PLAN.md",
+        "手動建立 .loop/STATE.json",
+        "手動建立 .loop/CHECKPOINTS.md",
+        "手動建立 .loop/EVIDENCE.md",
+        "手動建立 .loop/POLICY.md",
+        "手動建立 .loop/LEARNINGS.json"
+      ]
+    },
+    {
+      "path": "scripts/init_project_workspace.js",
+      "category": "strong-accelerator",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-project-bootstrap",
+      "fallback_steps": [
+        "手動建立 AGENTS.md、CLAUDE.md、GEMINI.md、README.md、README.en.md",
+        "手動建立 docs/SPEC.md、docs/TASKS.md、docs/DEBUG_NOTES.md、docs/STATE.md",
+        "手動建立 .github/copilot-instructions.md、.cursorrules、.cursor/rules/*",
+        "手動建立 .loop/* 並接上 session loop contract"
+      ]
+    },
+    {
+      "path": "scripts/fresh_clone_smoke_test.js",
+      "category": "quality-gate",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "ci"],
+      "fallback_mode": "manual-fresh-clone-smoke-review",
+      "fallback_steps": [
+        "跑 node scripts/validate_repo_integrity.js",
+        "確認 plugin / marketplace / agent manifest JSON 可解析",
+        "手動跑 bootstrap_agent_files.js 到暫存目錄並驗證目標目錄結構",
+        "手動跑 init_project_workspace.js 與 init_session_loop.js 的最小 smoke path"
+      ]
+    },
+    {
+      "path": "scripts/marketplace_install_smoke_test.js",
+      "category": "quality-gate",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "ci"],
+      "fallback_mode": "manual-marketplace-install-review",
+      "fallback_steps": [
+        "確認 .agents/plugins/marketplace.json 可解析，且 local plugin entry 存在",
+        "確認 .codex-plugin/plugin.json 與 marketplace entry 名稱、skills path 一致",
+        "手動跑 bootstrap_agent_files.js 到暫存目錄",
+        "確認 .agents/skills/using-agent-skills/SKILL.md 與 mirrors 可讀，作為 restart / trigger 最小證據"
+      ]
     },
     {
       "path": "scripts/generate_project_configs.js",
       "category": "strong-accelerator",
       "requires": ["node", "filesystem:write"],
       "scope": ["local-dev", "sandbox", "remote-runner"],
-      "fallback_mode": "manual-config-generation"
+      "fallback_mode": "manual-config-generation",
+      "fallback_steps": [
+        "依 docs/project_config_generation.md 的 profile 與原則手動產生設定檔",
+        "優先保留官方 scaffold 已建立的檔案",
+        "必要時只輸出計畫，不強寫檔案"
+      ]
+    },
+    {
+      "path": "scripts/scaffold_project.js",
+      "category": "environment-bound",
+      "requires": ["node", "shell", "network"],
+      "scope": ["local-dev", "sandbox-with-network", "remote-runner"],
+      "fallback_mode": "official-scaffold-plan-only",
+      "fallback_steps": [
+        "只輸出官方 scaffold 指令與參數",
+        "等使用者或外部 runner 在合適環境執行",
+        "之後再套用 init_project_workspace 與 generate_project_configs 流程"
+      ]
+    },
+    {
+      "path": "scripts/platform_prerequisite_doctor.js",
+      "category": "environment-bound",
+      "requires": ["node", "shell"],
+      "scope": ["local-dev", "sandbox", "remote-runner", "ci"],
+      "fallback_mode": "manual-platform-prerequisite-audit",
+      "fallback_steps": [
+        "讀 config/platform_prerequisites.json 與 docs/platform_prerequisite_doctor.md",
+        "人工逐項檢查 node、rust、flutter、xcode、android sdk 等依賴",
+        "把結果寫到 docs/STATE.md 或 .loop/EVIDENCE.md"
+      ]
+    },
+    {
+      "path": "scripts/auto_skill_setup.js",
+      "category": "accelerator",
+      "requires": ["node", "filesystem:read"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-skill-selection",
+      "fallback_steps": [
+        "讀 docs/agent_skill_catalog.md",
+        "讀 docs/third_party_skills.md",
+        "依專案型別、技術棧、部署方式人工選 skill"
+      ]
+    },
+    {
+      "path": "scripts/bootstrap_agent_files.js",
+      "category": "strong-accelerator",
+      "requires": ["node", "filesystem:write"],
+      "scope": ["local-dev", "sandbox", "remote-runner"],
+      "fallback_mode": "manual-file-copy",
+      "fallback_steps": [
+        "手動複製 AGENTS.md、CLAUDE.md、GEMINI.md",
+        "手動複製 docs/、skills/、.agents/skills/、.claude/skills/",
+        "確認 .loop/*、.gemini/commands/*、.github/workflows/ci.yml 都存在"
+      ]
+    },
+    {
+      "path": "scripts/export_skills_for_hermes_openclaw.sh",
+      "category": "environment-bound",
+      "requires": ["shell", "filesystem:write"],
+      "scope": ["local-dev", "sandbox-shell", "remote-runner"],
+      "fallback_mode": "manual-skill-export",
+      "fallback_steps": [
+        "手動複製 .agents/skills/ 到目標平台可讀路徑",
+        "保留 CLAUDE.md、AGENTS.md 與 README.en.md 作為平台入口"
+      ]
+    },
+    {
+      "path": "scripts/setup_sandbox_tools.sh",
+      "category": "environment-bound",
+      "requires": ["shell", "network", "package-manager"],
+      "scope": ["local-dev", "sandbox-with-network", "remote-runner"],
+      "fallback_mode": "manual-tool-install-guide",
+      "fallback_steps": [
+        "讀 docs/sandbox_tooling_guide.md",
+        "依平台手動安裝 rg、fd、jq、biome 等工具",
+        "若不能安裝，只保留能力盤點與手動流程"
+      ]
     }
   ]
 }
