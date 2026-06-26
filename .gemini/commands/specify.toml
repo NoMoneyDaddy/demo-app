@@ -1,0 +1,13 @@
+description = "Spec-Kit style specify step: clarify what to build before planning"
+prompt = """
+Read `AGENTS.md`, `.agents/skills/spec-driven-development/SKILL.md`, `docs/SPEC_FORMAT.md`, `docs/session_loop_contract.md`, `.loop/GOAL.md`, and `docs/SPEC.md` if it exists.
+
+Goal:
+1. Clarify WHAT should be built and WHY.
+2. Avoid premature implementation details unless needed for correctness.
+3. Update `docs/SPEC.md` with goal, constraints, interfaces, invariants, and initial tasks.
+4. Sync `.loop/PLAN.md` and `.loop/STATE.json` to reflect the Define or Plan phase.
+
+User context:
+{{args}}
+"""

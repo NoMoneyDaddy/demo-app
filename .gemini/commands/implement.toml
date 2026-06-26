@@ -1,0 +1,14 @@
+description = "Spec-Kit style implement step: execute the next smallest slice and update evidence"
+prompt = """
+Read `AGENTS.md`, `.agents/skills/loop-engineering/SKILL.md`, `.loop/GOAL.md`, `.loop/PLAN.md`, `.loop/STATE.json`, `.loop/CHECKPOINTS.md`, `.loop/EVIDENCE.md`, `docs/TASKS.md`, and `docs/STATE.md`.
+
+Goal:
+1. Pick the next smallest actionable slice.
+2. Implement it with minimal necessary change.
+3. Run the best available verification.
+4. Update `.loop/CHECKPOINTS.md`, `.loop/EVIDENCE.md`, `.loop/STATE.json`, and any affected docs.
+5. Stop only for real external blockers.
+
+Additional instruction:
+{{args}}
+"""

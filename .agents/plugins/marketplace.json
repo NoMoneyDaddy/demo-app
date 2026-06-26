@@ -1,0 +1,20 @@
+{
+  "name": "one-button-done-local",
+  "interface": {
+    "displayName": "One Button Done Local"
+  },
+  "plugins": [
+    {
+      "name": "one-button-done-project",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "NONE"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

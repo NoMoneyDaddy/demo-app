@@ -1,0 +1,13 @@
+description = "Spec-Kit style planning step: turn spec into architecture and phased execution"
+prompt = """
+Read `AGENTS.md`, `.agents/skills/planning-and-task-breakdown/SKILL.md`, `.agents/skills/project-config-generation/SKILL.md`, `docs/project_architecture_best_practices.md`, `.loop/GOAL.md`, `.loop/PLAN.md`, `.loop/STATE.json`, and `docs/SPEC.md`.
+
+Goal:
+1. Turn the current spec into a phased plan.
+2. If the stack is already chosen, decide whether `scripts/generate_project_configs.js` should run now.
+3. Update `docs/TASKS.md` and `.loop/PLAN.md`.
+4. Update `.loop/STATE.json` to the right phase/state.
+
+Additional instruction:
+{{args}}
+"""

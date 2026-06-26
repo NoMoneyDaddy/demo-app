@@ -1,0 +1,13 @@
+description = "Spec-Kit style task slicing step: derive small verifiable tasks"
+prompt = """
+Read `AGENTS.md`, `.agents/skills/planning-and-task-breakdown/SKILL.md`, `.loop/GOAL.md`, `.loop/PLAN.md`, `.loop/STATE.json`, `docs/SPEC.md`, and `docs/TASKS.md`.
+
+Goal:
+1. Slice the work into the smallest verifiable tasks.
+2. Keep each task independently testable or reviewable.
+3. Update `docs/TASKS.md`.
+4. Sync `.loop/PLAN.md` and `.loop/STATE.json`.
+
+Additional instruction:
+{{args}}
+"""
