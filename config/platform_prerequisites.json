@@ -1,0 +1,338 @@
+{
+  "schema_version": "1.0.0",
+  "checks": {
+    "node": {
+      "type": "command-version",
+      "command": "node",
+      "args": ["--version"],
+      "version_pattern": "v?(\\d+)",
+      "displayName": "Node.js"
+    },
+    "npm": {
+      "type": "command-version",
+      "command": "npm",
+      "args": ["--version"],
+      "version_pattern": "^(\\d+)",
+      "displayName": "npm"
+    },
+    "java": {
+      "type": "command-version",
+      "command": "java",
+      "args": ["-version"],
+      "version_pattern": "\"(\\d+)",
+      "displayName": "Java Runtime"
+    },
+    "flutter": {
+      "type": "command-version",
+      "command": "flutter",
+      "args": ["--version"],
+      "version_pattern": "Flutter\\s+(\\d+)",
+      "displayName": "Flutter SDK"
+    },
+    "dart": {
+      "type": "command-version",
+      "command": "dart",
+      "args": ["--version"],
+      "version_pattern": "Dart SDK version:\\s+(\\d+)",
+      "displayName": "Dart SDK"
+    },
+    "rustc": {
+      "type": "command-version",
+      "command": "rustc",
+      "args": ["--version"],
+      "version_pattern": "rustc\\s+(\\d+)",
+      "displayName": "Rust toolchain"
+    },
+    "cargo": {
+      "type": "command-exists",
+      "command": "cargo",
+      "displayName": "Cargo"
+    },
+    "xcodebuild": {
+      "type": "command-version",
+      "command": "xcodebuild",
+      "args": ["-version"],
+      "version_pattern": "Xcode\\s+(\\d+)",
+      "displayName": "Xcode"
+    },
+    "xcode-select": {
+      "type": "command-exists",
+      "command": "xcode-select",
+      "displayName": "Xcode Command Line Tools"
+    },
+    "xcrun-simctl": {
+      "type": "command-exists",
+      "command": "xcrun",
+      "args": ["simctl", "help"],
+      "displayName": "iOS Simulator tooling"
+    },
+    "xcode-app": {
+      "type": "path-exists",
+      "path": "/Applications/Xcode.app",
+      "displayName": "Xcode.app"
+    },
+    "adb": {
+      "type": "command-exists",
+      "command": "adb",
+      "displayName": "Android SDK Platform Tools"
+    },
+    "sdkmanager": {
+      "type": "command-exists",
+      "command": "sdkmanager",
+      "displayName": "Android SDK Manager"
+    },
+    "android-studio": {
+      "type": "command-exists",
+      "command": "studio",
+      "displayName": "Android Studio launcher"
+    },
+    "android-studio-app": {
+      "type": "path-exists",
+      "path": "/Applications/Android Studio.app",
+      "displayName": "Android Studio.app"
+    },
+    "avdmanager": {
+      "type": "command-exists",
+      "command": "avdmanager",
+      "displayName": "Android AVD Manager"
+    },
+    "emulator": {
+      "type": "command-exists",
+      "command": "emulator",
+      "args": ["-version"],
+      "displayName": "Android Emulator"
+    },
+    "cocoapods": {
+      "type": "command-version",
+      "command": "pod",
+      "args": ["--version"],
+      "version_pattern": "^(\\d+)",
+      "displayName": "CocoaPods"
+    }
+  },
+  "profiles": {
+    "react-native-expo": {
+      "displayName": "React Native + Expo",
+      "required": [
+        {
+          "check": "node",
+          "min_major": 20,
+          "severity": "fail",
+          "reason": "Expo scaffold 與 dev workflow 需要 Node.js"
+        }
+      ],
+      "optional": [
+        {
+          "check": "xcodebuild",
+          "severity": "warn",
+          "reason": "若要跑 iOS simulator / build，需要 Xcode"
+        },
+        {
+          "check": "adb",
+          "severity": "warn",
+          "reason": "若要跑 Android device / emulator，需要 Android SDK Platform Tools"
+        }
+      ],
+      "official_docs": [
+        "https://docs.expo.dev/get-started/create-a-project/"
+      ]
+    },
+    "capacitor-mobile-app": {
+      "displayName": "Capacitor Mobile App",
+      "required": [
+        {
+          "check": "node",
+          "min_major": 22,
+          "severity": "fail",
+          "reason": "Capacitor 8 官方環境需求是 Node.js 22+"
+        }
+      ],
+      "optional": [
+        {
+          "check": "xcodebuild",
+          "severity": "warn",
+          "reason": "若要開發 iOS，需要 Xcode"
+        },
+        {
+          "check": "xcode-select",
+          "severity": "warn",
+          "reason": "若要開發 iOS，需要 Xcode Command Line Tools"
+        },
+        {
+          "check": "adb",
+          "severity": "warn",
+          "reason": "若要開發 Android，需要 Android SDK Platform Tools"
+        },
+        {
+          "check": "sdkmanager",
+          "severity": "warn",
+          "reason": "若要管理 Android SDK 套件，需要 sdkmanager"
+        }
+      ],
+      "official_docs": [
+        "https://capacitorjs.com/docs/getting-started",
+        "https://capacitorjs.com/docs/getting-started/environment-setup"
+      ]
+    },
+    "flutter-app": {
+      "displayName": "Flutter App",
+      "required": [
+        {
+          "check": "flutter",
+          "severity": "fail",
+          "reason": "Flutter app scaffold 與 toolchain 需要 Flutter SDK"
+        },
+        {
+          "check": "dart",
+          "severity": "fail",
+          "reason": "Flutter CLI 依賴 Dart SDK"
+        }
+      ],
+      "optional": [
+        {
+          "check": "xcodebuild",
+          "severity": "warn",
+          "reason": "若要開發 iOS / macOS，需要 Xcode"
+        },
+        {
+          "check": "adb",
+          "severity": "warn",
+          "reason": "若要開發 Android，需要 Android SDK Platform Tools"
+        }
+      ],
+      "official_docs": [
+        "https://docs.flutter.dev/get-started/install"
+      ]
+    },
+    "tauri-desktop": {
+      "displayName": "Tauri Desktop",
+      "required": [
+        {
+          "check": "node",
+          "min_major": 20,
+          "severity": "fail",
+          "reason": "Tauri JS scaffold 與 package manager 需要 Node.js"
+        },
+        {
+          "check": "rustc",
+          "severity": "fail",
+          "reason": "Tauri desktop build 需要 Rust"
+        },
+        {
+          "check": "cargo",
+          "severity": "fail",
+          "reason": "Tauri build / dev workflow 需要 Cargo"
+        }
+      ],
+      "optional": [
+        {
+          "check": "xcode-select",
+          "severity": "warn",
+          "reason": "macOS desktop target 建議有 Xcode Command Line Tools"
+        }
+      ],
+      "official_docs": [
+        "https://v2.tauri.app/start/prerequisites/"
+      ]
+    },
+    "electron-desktop": {
+      "displayName": "Electron Desktop",
+      "required": [
+        {
+          "check": "node",
+          "min_major": 20,
+          "severity": "fail",
+          "reason": "Electron 開發需要 Node.js 與 npm 生態"
+        },
+        {
+          "check": "npm",
+          "severity": "fail",
+          "reason": "官方 quick start 以 npm workflow 為基線"
+        }
+      ],
+      "official_docs": [
+        "https://www.electronjs.org/docs/latest/tutorial/tutorial-first-app"
+      ]
+    },
+    "ios-swiftui": {
+      "displayName": "iOS SwiftUI",
+      "required": [
+        {
+          "check": "xcodebuild",
+          "min_major": 26,
+          "severity": "fail",
+          "reason": "iOS SwiftUI 需要 Xcode"
+        },
+        {
+          "check": "xcode-select",
+          "severity": "fail",
+          "reason": "Command Line Tools 是最低基線"
+        },
+        {
+          "check": "xcode-app",
+          "severity": "fail",
+          "reason": "iOS SwiftUI 官方建立流程需要完整 Xcode.app"
+        }
+      ],
+      "optional": [
+        {
+          "check": "xcrun-simctl",
+          "severity": "warn",
+          "reason": "若要用 iOS Simulator 建立與執行 app，需要 simctl"
+        },
+        {
+          "check": "cocoapods",
+          "severity": "warn",
+          "reason": "若專案或套件仍走 CocoaPods，需額外安裝"
+        }
+      ],
+      "official_docs": [
+        "https://developer.apple.com/xcode/",
+        "https://developer.apple.com/tutorials/swiftui"
+      ]
+    },
+    "android-kotlin": {
+      "displayName": "Android Kotlin",
+      "required": [
+        {
+          "check": "java",
+          "min_major": 17,
+          "severity": "fail",
+          "reason": "Android SDK command-line tools 需要 JDK 17+"
+        },
+        {
+          "check": "adb",
+          "severity": "fail",
+          "reason": "Android development 需要 SDK Platform Tools"
+        },
+        {
+          "check": "sdkmanager",
+          "severity": "fail",
+          "reason": "Android SDK 管理與安裝需要 sdkmanager"
+        }
+      ],
+      "optional": [
+        {
+          "check": "android-studio-app",
+          "severity": "warn",
+          "reason": "Android Studio 是官方 IDE 基線"
+        },
+        {
+          "check": "avdmanager",
+          "severity": "warn",
+          "reason": "若要建立 Android Emulator 虛擬裝置，需要 AVD Manager"
+        },
+        {
+          "check": "emulator",
+          "severity": "warn",
+          "reason": "若要在本機跑 Android Emulator，需要 emulator binary"
+        }
+      ],
+      "official_docs": [
+        "https://developer.android.com/studio",
+        "https://developer.android.com/studio/projects/create-project",
+        "https://developer.android.com/studio/run"
+      ]
+    }
+  }
+}

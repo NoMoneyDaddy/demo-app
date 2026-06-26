@@ -1,0 +1,272 @@
+{
+  "profiles": {
+    "workflow-core": [
+      {
+        "name": "using-agent-skills",
+        "source": "internal",
+        "reason": "所有 skill 的入口與路由"
+      },
+      {
+        "name": "interview-me",
+        "source": "internal",
+        "reason": "一題一題問出真正需求，避免一開始問錯問題"
+      },
+      {
+        "name": "idea-refine",
+        "source": "internal",
+        "reason": "把模糊想法收斂成可規劃概念"
+      },
+      {
+        "name": "goal-loop",
+        "source": "internal",
+        "reason": "用 repo 內 .loop/* 實現跨平台 session goal loop"
+      },
+      {
+        "name": "spec-driven-development",
+        "source": "internal",
+        "reason": "先寫規格再實作"
+      },
+      {
+        "name": "planning-and-task-breakdown",
+        "source": "internal",
+        "reason": "任務拆成可驗證小步驟"
+      },
+      {
+        "name": "project-config-generation",
+        "source": "internal",
+        "reason": "技術棧確認後，先把 package.json、tsconfig、framework config、env example 落地"
+      },
+      {
+        "name": "tool-discovery-and-installation",
+        "source": "internal",
+        "reason": "自動盤點缺少的 skills、MCP、CLI，並走安全安裝或引導流程"
+      },
+      {
+        "name": "incremental-implementation",
+        "source": "internal",
+        "reason": "薄切片持續交付"
+      },
+      {
+        "name": "test-driven-development",
+        "source": "internal",
+        "reason": "先重現與測試，再修正"
+      },
+      {
+        "name": "context-engineering",
+        "source": "internal",
+        "reason": "控制上下文讀取與事實落檔"
+      },
+      {
+        "name": "source-driven-development",
+        "source": "internal",
+        "reason": "框架與平台決策回到官方文檔"
+      },
+      {
+        "name": "documentation-and-adrs",
+        "source": "internal",
+        "reason": "重要決策、狀態與收尾文件"
+      },
+      {
+        "name": "loop-engineering",
+        "source": "internal",
+        "reason": "主工作流 orchestrator"
+      },
+      {
+        "name": "cavekit-spec",
+        "source": "internal",
+        "reason": "結構化維護 docs/SPEC.md"
+      },
+      {
+        "name": "cavekit-backprop",
+        "source": "internal",
+        "reason": "bug 反寫回規格、測試與不變量"
+      },
+      {
+        "name": "cavekit-check",
+        "source": "internal",
+        "reason": "檢查規格與實作漂移"
+      }
+    ],
+    "quality-core": [
+      {
+        "name": "debugging-and-error-recovery",
+        "source": "internal",
+        "reason": "結構化除錯與熔斷"
+      },
+      {
+        "name": "browser-testing-with-devtools",
+        "source": "internal",
+        "reason": "用真實瀏覽器驗證前端"
+      },
+      {
+        "name": "code-review-and-quality",
+        "source": "internal",
+        "reason": "合併前五維審查"
+      },
+      {
+        "name": "code-simplification",
+        "source": "internal",
+        "reason": "維持行為不變的簡化重構"
+      },
+      {
+        "name": "security-and-hardening",
+        "source": "internal",
+        "reason": "security-first 開發與 hardening"
+      },
+      {
+        "name": "performance-optimization",
+        "source": "internal",
+        "reason": "量測後優化"
+      },
+      {
+        "name": "git-workflow-and-versioning",
+        "source": "internal",
+        "reason": "可逆、可審查的 git 紀律"
+      },
+      {
+        "name": "ci-cd-and-automation",
+        "source": "internal",
+        "reason": "自動化品質門檻與交付流程"
+      },
+      {
+        "name": "deprecation-and-migration",
+        "source": "internal",
+        "reason": "舊系統與介面遷移管理"
+      },
+      {
+        "name": "shipping-and-launch",
+        "source": "internal",
+        "reason": "可逆、可觀測的上線流程"
+      },
+      {
+        "name": "observability-and-instrumentation",
+        "source": "internal",
+        "reason": "讓上線後有足夠 logs、metrics 與 runtime 訊號"
+      }
+    ],
+    "core": [
+      {
+        "name": "openai-docs",
+        "source": "system",
+        "reason": "查官方 OpenAI / Codex 文檔"
+      },
+      {
+        "name": "context7-mcp",
+        "source": "system",
+        "reason": "查框架與函式庫最新官方文檔"
+      }
+    ],
+    "web-app": [
+      {
+        "name": "frontend-ui-engineering",
+        "source": "internal",
+        "reason": "前端 UI、互動與版面工程"
+      },
+      {
+        "name": "api-and-interface-design",
+        "source": "internal",
+        "reason": "前後端邊界與介面契約"
+      },
+      {
+        "name": "website-best-practices",
+        "source": "internal",
+        "reason": "網站語意、可近用性、效能與內容基線"
+      },
+      {
+        "name": "responsive-design-best-practices",
+        "source": "internal",
+        "reason": "RWD、流動版面、斷點與媒體策略"
+      },
+      {
+        "name": "ui-ux-designer",
+        "source": "internal",
+        "reason": "介面品質、設計系統與可用性"
+      }
+    ],
+    "motion-ui": [
+      {
+        "name": "text-to-lottie",
+        "source": "internal",
+        "reason": "需要 Lottie / motion graphics / animated SVG 時的技能路由"
+      }
+    ],
+    "monitoring": [
+      {
+        "name": "recurring-monitoring",
+        "source": "internal",
+        "reason": "定期 watch / babysit / monitor PR、deploy、long-running task"
+      }
+    ],
+    "typescript": [
+      {
+        "name": "typescript-best-practices",
+        "source": "internal",
+        "reason": "型別安全、tsconfig 與 TypeScript 寫法"
+      },
+      {
+        "name": "biome-quality-automation",
+        "source": "internal",
+        "reason": "JS / TS 專案的 format + lint + safe fix + CI quality loop"
+      }
+    ],
+    "supabase": [
+      {
+        "name": "supabase-best-practices",
+        "source": "internal",
+        "reason": "Supabase auth、RLS、schema、client/server 分離"
+      }
+    ],
+    "optional-external": [
+      {
+        "name": "zeabur/agent-skills",
+        "source": "manual",
+        "reason": "Claude Code / Zeabur 進階部署操作，可選補強"
+      },
+      {
+        "name": "ui-skills",
+        "source": "github",
+        "repo": "ibelick/ui-skills",
+        "path": "",
+        "reason": "可選外部 UI 靈感與元件工作流"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "when": {
+        "projectType": ["web-app", "landing-page", "data-dashboard", "ecommerce"]
+      },
+      "include": ["workflow-core", "quality-core", "core", "web-app"]
+    },
+    {
+      "when": {
+        "uiStyle": ["animated", "motion-heavy", "premium", "marketing"]
+      },
+      "include": ["motion-ui"]
+    },
+    {
+      "when": {
+        "projectType": ["web-app", "api-service", "mobile-app", "desktop-app"]
+      },
+      "include": ["monitoring"]
+    },
+    {
+      "when": {
+        "projectType": ["api-service"]
+      },
+      "include": ["workflow-core", "quality-core", "core"]
+    },
+    {
+      "when": {
+        "language": ["typescript", "ts", "tsx"]
+      },
+      "include": ["typescript"]
+    },
+    {
+      "when": {
+        "database": ["supabase"]
+      },
+      "include": ["supabase"]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "profiles": {
+    "cli-foundation": [
+      {
+        "name": "ripgrep",
+        "source": "manual",
+        "command": "rg",
+        "homepage": "https://github.com/BurntSushi/ripgrep",
+        "install": "brew install ripgrep",
+        "reason": "預設全文搜尋器；比 grep 更快，適合 AI 與人類共同查碼"
+      },
+      {
+        "name": "fd",
+        "source": "manual",
+        "command": "fd",
+        "homepage": "https://github.com/sharkdp/fd",
+        "install": "brew install fd",
+        "reason": "快速找檔案與目錄，取代 find 的長參數痛點"
+      },
+      {
+        "name": "fzf",
+        "source": "manual",
+        "command": "fzf",
+        "homepage": "https://github.com/junegunn/fzf",
+        "install": "brew install fzf",
+        "reason": "模糊搜尋入口；適合大 repo 選檔、選歷史、選分支"
+      },
+      {
+        "name": "zoxide",
+        "source": "manual",
+        "command": "zoxide",
+        "homepage": "https://github.com/ajeetdsouza/zoxide",
+        "install": "brew install zoxide",
+        "reason": "智慧跳目錄；多專案切換成本最低"
+      },
+      {
+        "name": "bat",
+        "source": "manual",
+        "command": "bat",
+        "homepage": "https://github.com/sharkdp/bat",
+        "install": "brew install bat",
+        "reason": "看檔案更快；語法高亮與 Git 差異對 review 有幫助"
+      },
+      {
+        "name": "jq",
+        "source": "manual",
+        "command": "jq",
+        "homepage": "https://jqlang.github.io/jq/",
+        "install": "brew install jq",
+        "reason": "JSON 處理標配；腳本、API、設定檔都會用到"
+      },
+      {
+        "name": "delta",
+        "source": "manual",
+        "command": "delta",
+        "homepage": "https://github.com/dandavison/delta",
+        "install": "brew install git-delta",
+        "reason": "Git diff 可讀性大幅提升，適合 review 與 AI 協作"
+      },
+      {
+        "name": "hyperfine",
+        "source": "manual",
+        "command": "hyperfine",
+        "homepage": "https://github.com/sharkdp/hyperfine",
+        "install": "brew install hyperfine",
+        "reason": "效能工作先測量；避免靠感覺選工具或命令"
+      }
+    ],
+    "repo-search": [
+      {
+        "name": "semble",
+        "source": "manual",
+        "command": "semble",
+        "homepage": "https://github.com/MinishLab/semble",
+        "install": "uv tool install semble && semble install",
+        "reason": "大型 repo 的語意搜尋與索引底座，減少全文讀檔與 token 浪費"
+      }
+    ],
+    "mcp-ops": [
+      {
+        "name": "mcp-cli",
+        "source": "manual",
+        "command": "mcp-cli",
+        "homepage": "https://github.com/doggy8088/mcp-cli",
+        "install": "npm install -g @willh/mcp-cli",
+        "reason": "用 shell 低 token 列出、搜尋、呼叫 MCP tools，適合 sandbox 與自動化腳本"
+      }
+    ],
+    "browser-verification": [
+      {
+        "name": "playwright-cli",
+        "source": "manual",
+        "command": "playwright-cli",
+        "homepage": "https://github.com/microsoft/playwright-cli",
+        "install": "npm install -g @playwright/cli@latest && playwright-cli install --skills",
+        "reason": "需要可重現的 E2E、錄製、截圖、selector 檢查時優先使用"
+      },
+      {
+        "name": "agent-browser",
+        "source": "manual",
+        "command": "agent-browser",
+        "homepage": "https://github.com/vercel-labs/agent-browser",
+        "install": "npm install -g agent-browser && agent-browser install",
+        "reason": "快速 smoke test、視覺驗證、互動檢查與 accessibility snapshot"
+      }
+    ],
+    "js-ts-quality": [
+      {
+        "name": "Biome",
+        "source": "manual",
+        "command": "biome",
+        "homepage": "https://biomejs.dev/",
+        "install": "npm install --save-dev --save-exact @biomejs/biome && npx @biomejs/biome init",
+        "reason": "JS / TS 專案的一體化 formatter、linter、import sorting、safe fix 與 CI quality gate"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "when": {
+        "projectType": ["web-app", "landing-page", "data-dashboard", "ecommerce", "api-service"]
+      },
+      "include": ["cli-foundation"]
+    },
+    {
+      "when": {
+        "projectType": ["web-app", "landing-page", "data-dashboard", "ecommerce", "api-service"]
+      },
+      "include": ["repo-search"]
+    },
+    {
+      "when": {
+        "projectType": ["web-app", "landing-page", "data-dashboard", "ecommerce", "api-service"]
+      },
+      "include": ["mcp-ops"]
+    },
+    {
+      "when": {
+        "projectType": ["web-app", "landing-page", "data-dashboard", "ecommerce"]
+      },
+      "include": ["browser-verification"]
+    },
+    {
+      "when": {
+        "language": ["typescript", "ts", "tsx", "javascript", "js", "jsx"]
+      },
+      "include": ["js-ts-quality"]
+    }
+  ]
+}

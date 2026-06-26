@@ -1,0 +1,214 @@
+{
+  "projectTypes": {
+    "web-app": {
+      "name": "Web 應用程式",
+      "description": "前後端完整的互動式 Web 應用",
+      "recommendedStack": {
+        "frontend": "Next.js 14 + TypeScript + Tailwind CSS + shadcn/ui",
+        "backend": "Node.js + Express/Fastify",
+        "database": "PostgreSQL + Prisma ORM",
+        "deployment": "Zeabur",
+        "testing": "Jest + React Testing Library",
+        "monitoring": "Sentry"
+      },
+      "keywords": ["web", "app", "dashboard", "管理系統", "SaaS"],
+      "exampleFeatures": [
+        "使用者認證與授權",
+        "資料庫 CRUD 操作",
+        "API 路由設計",
+        "響應式 UI 設計",
+        "實時資料更新"
+      ]
+    },
+    "mobile-app": {
+      "name": "行動應用程式",
+      "description": "iOS/Android 原生或跨平台應用",
+      "recommendedStack": {
+        "frontend": "React Native + Expo + TypeScript",
+        "backend": "Node.js + Express",
+        "database": "Firebase Realtime DB 或 PostgreSQL",
+        "deployment": "Expo Go / EAS Build",
+        "testing": "Jest + Detox"
+      },
+      "keywords": ["mobile", "app", "ios", "android", "手機"],
+      "exampleFeatures": [
+        "推播通知",
+        "離線同步",
+        "相機/相簿集成",
+        "地理位置服務"
+      ]
+    },
+    "desktop-app": {
+      "name": "桌面應用程式",
+      "description": "macOS / Windows / Linux 桌面應用",
+      "recommendedStack": {
+        "frontend": "Tauri + React/Vite 或 Electron + React",
+        "backend": "本地 runtime + Node/Rust bridge",
+        "database": "SQLite 或 PostgreSQL/Supabase",
+        "deployment": "Tauri bundler / Electron builder",
+        "testing": "Playwright + package smoke tests"
+      },
+      "keywords": ["desktop", "macos", "windows", "linux", "tauri", "electron"],
+      "exampleFeatures": [
+        "檔案系統整合",
+        "系統通知",
+        "本地資料儲存",
+        "自動更新"
+      ]
+    },
+    "landing-page": {
+      "name": "落地頁面",
+      "description": "高轉換率的行銷落地頁",
+      "recommendedStack": {
+        "frontend": "Next.js 14 + TypeScript + Tailwind CSS",
+        "backend": "Serverless (Vercel Functions 或 Zeabur)",
+        "database": "MongoDB 或 Supabase",
+        "deployment": "Zeabur",
+        "testing": "Playwright"
+      },
+      "keywords": ["landing", "marketing", "頁面", "轉換", "銷售"],
+      "exampleFeatures": [
+        "SEO 優化",
+        "表單提交",
+        "分析追蹤 (GA)",
+        "郵件訂閱",
+        "支付整合"
+      ]
+    },
+    "api-service": {
+      "name": "API 服務",
+      "description": "RESTful 或 GraphQL API 後端",
+      "recommendedStack": {
+        "backend": "Node.js + Express/Fastify 或 Python + FastAPI",
+        "database": "PostgreSQL + Redis",
+        "deployment": "Zeabur",
+        "testing": "Jest + Supertest",
+        "documentation": "Swagger/OpenAPI"
+      },
+      "keywords": ["api", "backend", "service", "microservice"],
+      "exampleFeatures": [
+        "認證 (JWT/OAuth)",
+        "速率限制",
+        "API 文檔",
+        "錯誤處理",
+        "日誌記錄"
+      ]
+    },
+    "data-dashboard": {
+      "name": "資料儀表板",
+      "description": "資料可視化與分析平台",
+      "recommendedStack": {
+        "frontend": "Next.js + TypeScript + Recharts/Plotly + Tailwind",
+        "backend": "Node.js + Express",
+        "database": "PostgreSQL + TimescaleDB",
+        "deployment": "Zeabur",
+        "testing": "Jest + Playwright"
+      },
+      "keywords": ["dashboard", "analytics", "data", "visualization", "圖表"],
+      "exampleFeatures": [
+        "即時資料更新",
+        "圖表與圖形",
+        "資料匯出 (CSV/PDF)",
+        "篩選與搜尋",
+        "自訂報告"
+      ]
+    },
+    "ecommerce": {
+      "name": "電商平台",
+      "description": "完整的購物車與支付系統",
+      "recommendedStack": {
+        "frontend": "Next.js + TypeScript + Tailwind + shadcn/ui",
+        "backend": "Node.js + Express",
+        "database": "PostgreSQL + Prisma",
+        "payment": "Stripe 或 PayPal",
+        "deployment": "Zeabur",
+        "testing": "Jest + Playwright"
+      },
+      "keywords": ["ecommerce", "shop", "store", "購物", "商城"],
+      "exampleFeatures": [
+        "產品目錄管理",
+        "購物車與結帳",
+        "支付整合",
+        "訂單管理",
+        "庫存追蹤",
+        "使用者評論"
+      ]
+    }
+  },
+  "uiStyles": {
+    "minimal": {
+      "name": "極簡風格",
+      "framework": "Tailwind CSS",
+      "components": "shadcn/ui (minimal 主題)",
+      "colors": ["#000000", "#FFFFFF", "#666666"],
+      "description": "黑白為主，極簡設計"
+    },
+    "modern": {
+      "name": "現代風格",
+      "framework": "Tailwind CSS",
+      "components": "shadcn/ui (default)",
+      "colors": ["#0F172A", "#E2E8F0", "#3B82F6"],
+      "description": "卡片式設計，帶有陰影與圓角"
+    },
+    "colorful": {
+      "name": "彩色風格",
+      "framework": "Tailwind CSS",
+      "components": "shadcn/ui + custom colors",
+      "colors": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#FFA07A"],
+      "description": "充滿活力的多彩設計"
+    },
+    "dark": {
+      "name": "深色模式",
+      "framework": "Tailwind CSS (dark mode)",
+      "components": "shadcn/ui (dark)",
+      "colors": ["#1A1A1A", "#2D2D2D", "#FFFFFF"],
+      "description": "護眼的深色主題"
+    }
+  },
+  "databases": {
+    "postgresql": {
+      "name": "PostgreSQL",
+      "pros": ["功能強大", "開源", "Zeabur 原生支援"],
+      "cons": ["需要管理"],
+      "bestFor": ["複雜查詢", "交易", "大規模應用"]
+    },
+    "mongodb": {
+      "name": "MongoDB",
+      "pros": ["靈活的 Schema", "易於擴展"],
+      "cons": ["不支援交易 (早期版本)"],
+      "bestFor": ["快速原型", "非結構化資料"]
+    },
+    "firebase": {
+      "name": "Firebase Realtime DB",
+      "pros": ["無伺服器", "即時同步", "易於設置"],
+      "cons": ["成本可能高", "查詢能力有限"],
+      "bestFor": ["即時應用", "行動應用"]
+    },
+    "supabase": {
+      "name": "Supabase",
+      "pros": ["PostgreSQL 基礎", "開源", "易於使用"],
+      "cons": ["相對較新"],
+      "bestFor": ["快速開發", "開源愛好者"]
+    }
+  },
+  "deploymentPlatforms": {
+    "zeabur": {
+      "name": "Zeabur",
+      "pros": ["支援多種語言", "內建資料庫", "自動 HTTPS"],
+      "cons": ["區域限制"],
+      "bestFor": ["全棧應用", "快速部署"]
+    },
+    "vercel": {
+      "name": "Vercel",
+      "pros": ["Next.js 官方", "邊緣計算", "快速"],
+      "cons": ["主要用於前端"],
+      "bestFor": ["Next.js 應用", "靜態網站"]
+    },
+    "heroku": {
+      "name": "Heroku",
+      "pros": ["易於使用", "支援多種語言"],
+      "cons": ["成本較高", "效能有限"],
+      "bestFor": ["小型應用", "學習"]
+    }
+  }
+}

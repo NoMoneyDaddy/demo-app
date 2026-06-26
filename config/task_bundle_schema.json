@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "required_top_level_keys": [
+    "schema_version",
+    "goal",
+    "constraints",
+    "interfaces",
+    "invariants",
+    "tasks",
+    "generated_at"
+  ],
+  "task_fields": [
+    "id",
+    "status",
+    "task",
+    "cites"
+  ]
+}

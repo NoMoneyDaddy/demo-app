@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "default_autonomy_level": "L1",
+  "maturity_levels": {
+    "L0": {
+      "label": "manual",
+      "default_decision": "human-first",
+      "notes": "只做分析、草稿、研究，不直接變更狀態"
+    },
+    "L1": {
+      "label": "report-only",
+      "default_decision": "repo-safe-only",
+      "notes": "可盤點、研究、寫文件，不做高風險外部寫入"
+    },
+    "L2": {
+      "label": "assisted",
+      "default_decision": "bounded-repo-write",
+      "notes": "可在 repo 內局部修改並驗證，但仍受 review gate 約束"
+    },
+    "L3": {
+      "label": "unattended",
+      "default_decision": "scoped-autonomy",
+      "notes": "只有在 scope、budget、audit trail、policy 都明確時才可持續自動執行"
+    }
+  },
+  "actions": [
+    {
+      "action_id": "repo_read",
+      "risk": "low",
+      "allowed_levels": ["L0", "L1", "L2", "L3"],
+      "default_decision": "allow",
+      "required_gates": []
+    },
+    {
+      "action_id": "doc_update",
+      "risk": "low",
+      "allowed_levels": ["L1", "L2", "L3"],
+      "default_decision": "allow",
+      "required_gates": ["git_diff_check"]
+    },
+    {
+      "action_id": "repo_write_local",
+      "risk": "medium",
+      "allowed_levels": ["L2", "L3"],
+      "default_decision": "allow-with-verification",
+      "required_gates": ["tests_or_smoke", "git_diff_check"]
+    },
+    {
+      "action_id": "verified_tool_setup",
+      "risk": "medium",
+      "allowed_levels": ["L2", "L3"],
+      "default_decision": "allow-with-trusted-source",
+      "required_gates": ["trusted_source_review", "version_check"]
+    },
+    {
+      "action_id": "external_research_read",
+      "risk": "low",
+      "allowed_levels": ["L0", "L1", "L2", "L3"],
+      "default_decision": "allow",
+      "required_gates": ["source_attribution"]
+    },
+    {
+      "action_id": "pr_create",
+      "risk": "medium",
+      "allowed_levels": ["L3"],
+      "default_decision": "allow-with-audit",
+      "required_gates": ["tests_or_smoke", "review_gate", "audit_trail"]
+    },
+    {
+      "action_id": "auto_merge",
+      "risk": "high",
+      "allowed_levels": ["L3"],
+      "default_decision": "human-gate",
+      "required_gates": ["all_checks_green", "review_gate", "audit_trail"]
+    },
+    {
+      "action_id": "system_tool_install",
+      "risk": "high",
+      "allowed_levels": ["L3"],
+      "default_decision": "human-gate",
+      "required_gates": ["trusted_source_review", "package_manager_check"]
+    },
+    {
+      "action_id": "deployment_write",
+      "risk": "high",
+      "allowed_levels": ["L3"],
+      "default_decision": "human-gate",
+      "required_gates": ["review_gate", "rollback_plan", "billing_risk_check"]
+    },
+    {
+      "action_id": "secret_entry",
+      "risk": "critical",
+      "allowed_levels": [],
+      "default_decision": "human-only",
+      "required_gates": ["interactive_user_entry"]
+    },
+    {
+      "action_id": "unguarded_external_write",
+      "risk": "critical",
+      "allowed_levels": [],
+      "default_decision": "deny",
+      "required_gates": []
+    }
+  ],
+  "approval_triggers": [
+    {
+      "trigger": "login_or_secret_entry",
+      "decision": "must-stop-and-request-human"
+    },
+    {
+      "trigger": "irreversible_choice",
+      "decision": "must-stop-and-request-human"
+    },
+    {
+      "trigger": "system_level_install",
+      "decision": "must-stop-and-request-human"
+    },
+    {
+      "trigger": "billing_or_deployment_risk",
+      "decision": "must-stop-and-request-human"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Session Task State",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "session",
+    "tasks"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "session": {
+      "type": "object",
+      "required": [
+        "session_id",
+        "goal",
+        "status",
+        "current_phase",
+        "tool_permissions",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "session_id": { "type": "string", "minLength": 1 },
+        "goal": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "running", "blocked", "review", "done", "cancelled"]
+        },
+        "current_phase": {
+          "type": "string",
+          "enum": ["Define", "Plan", "Build", "Verify", "Review", "Ship"]
+        },
+        "sandbox_id": { "type": ["string", "null"] },
+        "tool_permissions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "task_id",
+          "title",
+          "status",
+          "owner",
+          "verification",
+          "artifacts"
+        ],
+        "properties": {
+          "task_id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "status": {
+            "type": "string",
+            "enum": ["queued", "running", "blocked", "review", "done", "cancelled"]
+          },
+          "owner": {
+            "type": "string",
+            "enum": ["human", "agent", "subagent", "automation"]
+          },
+          "sandbox_id": { "type": ["string", "null"] },
+          "lease_ttl_minutes": {
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "depends_on": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "verification": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "artifacts": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
